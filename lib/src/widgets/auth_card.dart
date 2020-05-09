@@ -28,6 +28,7 @@ class AuthCard extends StatefulWidget {
     this.passwordValidator,
     this.onSubmit,
     this.onSubmitCompleted,
+    this.socialButtonsArea,
   }) : super(key: key);
 
   final EdgeInsets padding;
@@ -36,6 +37,7 @@ class AuthCard extends StatefulWidget {
   final FormFieldValidator<String> passwordValidator;
   final Function onSubmit;
   final Function onSubmitCompleted;
+  final Widget socialButtonsArea;
 
   @override
   AuthCardState createState() => AuthCardState();
@@ -289,6 +291,7 @@ class AuthCardState extends State<AuthCard> with TickerProviderStateMixin {
                     emailValidator: widget.emailValidator,
                     passwordValidator: widget.passwordValidator,
                     onSwitchRecoveryPassword: () => _switchRecovery(true),
+                    socialButtonsArea: widget.socialButtonsArea,
                     onSubmitCompleted: () {
                       _forwardChangeRouteAnimation().then((_) {
                         widget?.onSubmitCompleted();
@@ -334,6 +337,7 @@ class _LoginCard extends StatefulWidget {
     @required this.onSwitchRecoveryPassword,
     this.onSwitchAuth,
     this.onSubmitCompleted,
+    this.socialButtonsArea,
   }) : super(key: key);
 
   final AnimationController loadingController;
@@ -342,6 +346,7 @@ class _LoginCard extends StatefulWidget {
   final Function onSwitchRecoveryPassword;
   final Function onSwitchAuth;
   final Function onSubmitCompleted;
+  final Widget socialButtonsArea;
 
   @override
   _LoginCardState createState() => _LoginCardState();
@@ -640,6 +645,7 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                widget.socialButtonsArea ?? Container(),
                 _buildNameField(textFieldWidth, messages, auth),
                 SizedBox(height: 20),
                 _buildPasswordField(textFieldWidth, messages, auth),

@@ -44,6 +44,22 @@ class LoginScreen extends StatelessWidget {
       logo: 'assets/images/ecorp.png',
       logoTag: Constants.logoTag,
       titleTag: Constants.titleTag,
+      socialButtonsArea: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+        FlatButton(
+          onPressed: () {},
+          child: Text(
+            "Google",
+          ),
+        ),
+        FlatButton(
+          onPressed: () {},
+          child: Text(
+            "Facebook",
+          ),
+        )
+      ]),
       // messages: LoginMessages(
       //   usernameHint: 'Username',
       //   passwordHint: 'Pass',

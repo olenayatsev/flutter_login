@@ -218,6 +218,7 @@ class FlutterLogin extends StatefulWidget {
     this.logoTag,
     this.titleTag,
     this.showDebugButtons = false,
+    this.socialButtonsArea,
   }) : super(key: key);
 
   /// Called when the user hit the submit button when in sign up mode
@@ -268,6 +269,9 @@ class FlutterLogin extends StatefulWidget {
   /// release mode, this will be overrided to false regardless of the value
   /// passed in
   final bool showDebugButtons;
+
+  /// Buttons for social login
+  final Widget socialButtonsArea;
 
   static final FormFieldValidator<String> defaultEmailValidator = (value) {
     if (value.isEmpty || !Regex.email.hasMatch(value)) {
@@ -574,13 +578,14 @@ class _FlutterLoginState extends State<FlutterLogin>
                   children: <Widget>[
                     Positioned(
                       child: AuthCard(
-                        key: authCardKey,
-                        padding: EdgeInsets.only(top: cardTopPosition),
-                        loadingController: _loadingController,
-                        emailValidator: emailValidator,
-                        passwordValidator: passwordValidator,
-                        onSubmit: _reverseHeaderAnimation,
-                        onSubmitCompleted: widget.onSubmitAnimationCompleted,
+                          key: authCardKey,
+                          padding: EdgeInsets.only(top: cardTopPosition),
+                          loadingController: _loadingController,
+                          emailValidator: emailValidator,
+                          passwordValidator: passwordValidator,
+                          onSubmit: _reverseHeaderAnimation,
+                          onSubmitCompleted: widget.onSubmitAnimationCompleted,
+                          socialButtonsArea: widget.socialButtonsArea
                       ),
                     ),
                     Positioned(
