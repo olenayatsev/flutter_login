@@ -645,11 +645,11 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                widget.socialButtonsArea ?? Container(),
                 _buildNameField(textFieldWidth, messages, auth),
                 SizedBox(height: 20),
                 _buildPasswordField(textFieldWidth, messages, auth),
                 SizedBox(height: 10),
+                widget.socialButtonsArea ?? Container(),
               ],
             ),
           ),
