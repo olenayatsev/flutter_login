@@ -48,7 +48,7 @@ class AuthCardState extends State<AuthCard> with TickerProviderStateMixin {
 
   var _isLoadingFirstTime = true;
   var _pageIndex = 0;
-  static const cardSizeScaleEnd = .2;
+  static const cardSizeScaleEnd = .1;
 
   TransformerPageController _pageController;
   AnimationController _formLoadingController;
