@@ -183,7 +183,7 @@ class __HeaderState extends State<_Header> {
 
     return 
       // height: widget.height,
-      child: Column(
+      Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           if (displayLogo)
