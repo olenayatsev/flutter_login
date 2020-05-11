@@ -580,9 +580,11 @@ class _FlutterLoginState extends State<FlutterLogin>
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
-            Theme(
+            SingleChildScrollView(
+              child: Theme(
                 data: theme,
-                child: Center(child:  Column(
+                child:  Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     widget.title != null || widget.logo != null 
                     ? Padding(padding: EdgeInsets.only(bottom: 10), 
@@ -600,9 +602,9 @@ class _FlutterLoginState extends State<FlutterLogin>
                       ),
                   ],
                 ),
-                ),
+                
               ),
-            
+            ),
             // SingleChildScrollView(
             //   child: Theme(
             //     data: theme,
