@@ -140,8 +140,8 @@ class __HeaderState extends State<_Header> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     const gap = 5.0;
-    final logoHeight = widget.logoHeight ?? min(widget.height - _titleHeight - gap, kMaxLogoHeight);
-    final displayLogo = widget.logoPath != null && logoHeight >= kMinLogoHeight;
+    final logoHeight = widget.logoHeight ?? widget.height - _titleHeight - gap;
+    final displayLogo = widget.logoPath != null;
 
     Widget logo = displayLogo
         ? Image.asset(
@@ -583,11 +583,12 @@ class _FlutterLoginState extends State<FlutterLogin>
             SingleChildScrollView(
               child: Theme(
                 data: theme,
-                child: Stack(
-                  alignment: Alignment.center,
+                child: Column(
                   children: <Widget>[
-                    Positioned(
-                      child: AuthCard(
+                    widget.title != null || widget.logo != null 
+                    ? Padding(padding: EdgeInsets.only(bottom: 15), child: _buildHeader(headerHeight, loginTheme))
+                    : NullWidget(),
+                    AuthCard(
                           key: authCardKey,
                           padding: EdgeInsets.only(top: cardTopPosition),
                           loadingController: _loadingController,
@@ -597,15 +598,37 @@ class _FlutterLoginState extends State<FlutterLogin>
                           onSubmitCompleted: widget.onSubmitAnimationCompleted,
                           socialButtonsArea: widget.socialButtonsArea
                       ),
-                    ),
-                    Positioned(
-                      top: cardTopPosition - headerHeight - headerMargin,
-                      child: _buildHeader(headerHeight, loginTheme),
-                    ),
+                    
                   ],
                 ),
               ),
             ),
+            // SingleChildScrollView(
+            //   child: Theme(
+            //     data: theme,
+            //     child: Stack(
+            //       alignment: Alignment.center,
+            //       children: <Widget>[
+            //         Positioned(
+            //           child: AuthCard(
+            //               key: authCardKey,
+            //               padding: EdgeInsets.only(top: cardTopPosition),
+            //               loadingController: _loadingController,
+            //               emailValidator: emailValidator,
+            //               passwordValidator: passwordValidator,
+            //               onSubmit: _reverseHeaderAnimation,
+            //               onSubmitCompleted: widget.onSubmitAnimationCompleted,
+            //               socialButtonsArea: widget.socialButtonsArea
+            //           ),
+            //         ),
+            //         Positioned(
+            //           top: cardTopPosition - headerHeight - headerMargin,
+            //           child: _buildHeader(headerHeight, loginTheme),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
             if (!kReleaseMode && widget.showDebugButtons)
               _buildDebugAnimationButtons(),
           ],
