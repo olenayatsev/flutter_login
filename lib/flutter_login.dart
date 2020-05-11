@@ -584,6 +584,7 @@ class _FlutterLoginState extends State<FlutterLogin>
               child: Theme(
                 data: theme,
                 child:  Column(
+                  mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     widget.title != null || widget.logo != null 
