@@ -181,8 +181,8 @@ class __HeaderState extends State<_Header> {
       title = null;
     }
 
-    return SizedBox(
-      height: widget.height,
+    return 
+      // height: widget.height,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
@@ -204,7 +204,7 @@ class __HeaderState extends State<_Header> {
             child: title,
           ),
         ],
-      ),
+      
     );
   }
 }
