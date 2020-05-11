@@ -224,6 +224,7 @@ class FlutterLogin extends StatefulWidget {
     this.onSubmitAnimationCompleted,
     this.logoTag,
     this.titleTag,
+    this.padding,
     this.logoHeight,
     this.showDebugButtons = false,
     this.socialButtonsArea,
@@ -268,6 +269,8 @@ class FlutterLogin extends StatefulWidget {
   /// Hero tag for logo image. If not specified, it will simply fade out when
   /// changing route
   final String logoTag;
+
+  final EdgeInsets padding;
 
   /// Hero tag for title text. Need to specify `LoginTheme.beforeHeroFontSize`
   /// and `LoginTheme.afterHeroFontSize` if you want different font size before
@@ -580,11 +583,12 @@ class _FlutterLoginState extends State<FlutterLogin>
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
-            Center(
+            SingleChildScrollView(
               child: Theme(
                 data: theme,
-                child:  Column(
-                  
+                child: Padding( 
+                  padding: widget.padding ?? EdgeInsets.all(0),
+                  child: Column(                  
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     widget.title != null || widget.logo != null 
@@ -603,7 +607,7 @@ class _FlutterLoginState extends State<FlutterLogin>
                       ),
                   ],
                 ),
-                
+                ),
               ),
             ),
             // SingleChildScrollView(
