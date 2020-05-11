@@ -590,7 +590,7 @@ class _FlutterLoginState extends State<FlutterLogin>
                     : NullWidget(),
                     AuthCard(
                           key: authCardKey,
-                          padding: EdgeInsets.only(top: cardTopPosition),
+                          // padding: EdgeInsets.only(top: cardTopPosition),
                           loadingController: _loadingController,
                           emailValidator: emailValidator,
                           passwordValidator: passwordValidator,
