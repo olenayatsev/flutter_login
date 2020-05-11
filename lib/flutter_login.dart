@@ -632,8 +632,8 @@ class _FlutterLoginState extends State<FlutterLogin>
             //     ),
             //   ),
             // ),
-            if (!kReleaseMode && widget.showDebugButtons)
-              _buildDebugAnimationButtons(),
+            // if (!kReleaseMode && widget.showDebugButtons)
+            //   _buildDebugAnimationButtons(),
           ],
         ),
       ),
