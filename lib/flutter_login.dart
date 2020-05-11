@@ -580,13 +580,13 @@ class _FlutterLoginState extends State<FlutterLogin>
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
-            SingleChildScrollView(
-              child: Theme(
+            Theme(
                 data: theme,
-                child: Column(
+                child: Center(child:  Column(
                   children: <Widget>[
                     widget.title != null || widget.logo != null 
-                    ? _buildHeader(headerHeight, loginTheme)
+                    ? Padding(padding: EdgeInsets.only(bottom: 10), 
+                    child: _buildHeader(headerHeight, loginTheme))
                     : NullWidget(),
                     AuthCard(
                           key: authCardKey,
@@ -598,11 +598,11 @@ class _FlutterLoginState extends State<FlutterLogin>
                           onSubmitCompleted: widget.onSubmitAnimationCompleted,
                           socialButtonsArea: widget.socialButtonsArea
                       ),
-                    
                   ],
                 ),
+                ),
               ),
-            ),
+            
             // SingleChildScrollView(
             //   child: Theme(
             //     data: theme,
