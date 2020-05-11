@@ -75,11 +75,13 @@ class _Header extends StatefulWidget {
     this.height = 250.0,
     this.logoController,
     this.titleController,
+    this.logoHeight,
     @required this.loginTheme,
   });
 
   final String logoPath;
   final String logoTag;
+  final double logoHeight;
   final String title;
   final String titleTag;
   final double height;
@@ -138,7 +140,7 @@ class __HeaderState extends State<_Header> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     const gap = 5.0;
-    final logoHeight = min(widget.height - _titleHeight - gap, kMaxLogoHeight);
+    final logoHeight = widget.logoHeight ?? min(widget.height - _titleHeight - gap, kMaxLogoHeight);
     final displayLogo = widget.logoPath != null && logoHeight >= kMinLogoHeight;
 
     Widget logo = displayLogo
@@ -157,7 +159,9 @@ class __HeaderState extends State<_Header> {
     }
 
     Widget title;
-    if (widget.titleTag != null && !DartHelper.isNullOrEmpty(widget.title)) {
+    if(widget.title == null)
+      title = null;
+    else if (widget.titleTag != null && !DartHelper.isNullOrEmpty(widget.title)) {
       title = HeroText(
         widget.title,
         key: kTitleKey,
@@ -189,8 +193,11 @@ class __HeaderState extends State<_Header> {
               fadeDirection: FadeDirection.topToBottom,
               child: logo,
             ),
+          title == null ? 
+          NullWidget() :
           SizedBox(height: gap),
-          FadeIn(
+          title == null ? 
+          NullWidget() : FadeIn(
             controller: widget.titleController,
             offset: .5,
             fadeDirection: FadeDirection.topToBottom,
@@ -208,7 +215,7 @@ class FlutterLogin extends StatefulWidget {
     @required this.onSignup,
     @required this.onLogin,
     @required this.onRecoverPassword,
-    this.title = 'LOGIN',
+    this.title,
     this.logo,
     this.messages,
     this.theme,
@@ -217,6 +224,7 @@ class FlutterLogin extends StatefulWidget {
     this.onSubmitAnimationCompleted,
     this.logoTag,
     this.titleTag,
+    this.logoHeight,
     this.showDebugButtons = false,
     this.socialButtonsArea,
   }) : super(key: key);
@@ -235,6 +243,7 @@ class FlutterLogin extends StatefulWidget {
 
   /// The path to the asset image that will be passed to the `Image.asset()`
   final String logo;
+  final double logoHeight;
 
   /// Describes all of the labels, text hints, button texts and other auth
   /// descriptions
@@ -357,6 +366,7 @@ class _FlutterLoginState extends State<FlutterLogin>
       logoTag: widget.logoTag,
       title: widget.title,
       titleTag: widget.titleTag,
+      logoHeight: widget.logoHeight,
       loginTheme: loginTheme,
     );
   }
