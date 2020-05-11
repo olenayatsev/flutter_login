@@ -616,7 +616,7 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
         onPressed: buttonEnabled ? _switchAuthMode : null,
         padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 4),
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        textColor: theme.primaryColor,
+        textColor: theme.textTheme.button.color,
       ),
     );
   }
