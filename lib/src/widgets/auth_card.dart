@@ -792,7 +792,7 @@ class _RecoverCardState extends State<_RecoverCard>
       } : null,
       padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 4),
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      textColor: theme.primaryColor,
+      textColor: theme.textTheme.button.color,
     );
   }
 
